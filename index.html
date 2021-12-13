@@ -27,17 +27,23 @@
       font-weight: 700;
       cursor: pointer;
     }
+    .hold-button {
+      margin-bottom: 15px;
+      padding: 6px;
+    }
   </style>
 </head>
 
 <body>
+  <button class="hold-button">hold</button>
   <div class="btn"></div>
   <p></p>
 
 </body>
 <script>
-  const btn = document.querySelector('.btn')
-  let pEl = document.querySelector('p')
+  const btn = document.querySelector('.btn');
+  let pEl = document.querySelector('p');
+  const holdBtn = document.querySelector('.hold-button');
 
   btn.addEventListener('click', () => {
     let dice = Math.floor(Math.random() * 6 + 1); 
@@ -46,9 +52,20 @@
       pEl.textContent = 0
     } else {
       pEl.textContent = dice;
+      //해당 턴의 합계
+      //alert();
     }
-  })
-
+  });
+  
+  holdBtn.addEventListener('click', ()=> {
+    let turn = confirm("hold 하시겠습니까?");
+    if(turn){
+      //alert("이번 턴 누적 점수 : "+ 누적점수변수);
+      alert("상대에게 턴을 넘깁니다.");
+    } else {
+      alert("계속 진행합니다.");
+    }
+  });
 
   // 1 랜덤으로 1과 6의 숫자가 나온다.
   // 2 숫자를 결과값에 표기한다.
